@@ -6,7 +6,6 @@ import socket
 import sys
 
 parser = argparse.ArgumentParser(
-                    prog = 'NightOwl admin passwd recovery',
                     description = 'This script recovers the admin '
                                   'password for NightOwl F6-series devices (and maybe others) '
                                   'using the published master password',
@@ -20,9 +19,6 @@ parser.add_argument('-v','--verbose',
                     action='store_true')
 
 args = parser.parse_args()
-
-if not args:
-    print(parser.print_help())
 
 print("\nTarget: %s\nPort:   %s\nVerbose: %s"
         % (args.target, args.port, args.verbose))
