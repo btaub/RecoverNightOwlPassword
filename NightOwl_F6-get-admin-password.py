@@ -15,8 +15,8 @@ parser = argparse.ArgumentParser(
                     '360009216554-Night-Owl-Legacy-Devices. Check that link for other master '
                     'passwords for older systems')
 parser.add_argument('-t','--target', required=True ,help='NightOwl device IP')
-parser.add_argument('-p', '--port',default=9000,help='Default port 9000 should work')
-parser.add_argument('-v', '--verbose',
+parser.add_argument('-p','--port',default=9000,help='Default port 9000 should work')
+parser.add_argument('-v','--verbose',
                     action='store_true')
 
 args = parser.parse_args()
