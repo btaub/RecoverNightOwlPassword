@@ -21,7 +21,7 @@ PASSWORD: 4321abcd
 
 ## Failed Recovery:
 ```
-% ./NightOwl_F6-get-admin-password.py -t 192.168.1.246
+% ./NightOwl_F6-get-admin-password.py -t 10.1.1.5
 
 Target: 192.168.1.246
 Port:   9000
