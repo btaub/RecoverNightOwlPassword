@@ -23,7 +23,7 @@ PASSWORD: 4321abcd
 ```
 % ./NightOwl_F6-get-admin-password.py -t 10.1.1.5
 
-Target: 192.168.1.246
+Target: 10.1.1.5
 Port:   9000
 Verbose: False
 
