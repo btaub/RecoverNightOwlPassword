@@ -3,7 +3,14 @@ This script recovers the admin password for the NightOwl F6-series of devices, u
 
 <img width="759" alt="nightOwl" src="https://user-images.githubusercontent.com/1743650/198940392-7006054c-d45f-4fd4-a137-f12215b90370.png">
 
-For other potential master passwords, see: https://support.nightowlsp.com/hc/en-us/articles/360009216554-Night-Owl-Legacy-Devices
+Other possible passwords include:
+
+```
+519070
+101101
+```
+
+For more information, see: https://web.archive.org/web/20200810153724/https://support.nightowlsp.com/hc/en-us/articles/360009216554-Night-Owl-Legacy-Devices
 
 ## Good Recovery:
 ```
