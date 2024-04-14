@@ -35,7 +35,7 @@ For more information, see: https://web.archive.org/web/20200810153724/https://su
 ```console
 % ./NightOwl_F6-get-admin-password.py -t 10.1.1.10
 
-ERROR: timed out connecting to 10.1.1.10
+[ERROR] timed out connecting to 10.1.1.10
 Check the IP and try again
 ```
 

@@ -29,7 +29,7 @@ s.settimeout(2)
 try:
     s.connect((args.target, args.port))
 except Exception as e:
-    print("\nERROR: %s connecting to %s\nCheck the IP and try again" % (e, args.target ))
+    print("\n[ERROR] %s connecting to %s\nCheck the IP and try again" % (e, args.target ))
     sys.exit(-1)
 
 # 61646d696e   = admin (can be anything)
